@@ -5,7 +5,7 @@ selectedPlanet = "earth";
 function storeButtonValue(event) {
   buttonValue = event.target.value;
   localStorage.setItem('selectedPlanet', buttonValue);
-  window.location.href = "index.html"
+  window.location.href = "index (1).html"
 }
 
 buttons.forEach(button => {
