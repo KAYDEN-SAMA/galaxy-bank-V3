@@ -1,11 +1,11 @@
 const buttons = document.querySelectorAll('.planetButton');
 
-selectedPlanet = "first guild";
+selectedPlanet = "earth";
 
 function storeButtonValue(event) {
   buttonValue = event.target.value;
   localStorage.setItem('selectedPlanet', buttonValue);
-  window.location.href = "/fetch data page/index.html"
+  window.location.href = "index.html"
 }
 
 buttons.forEach(button => {
