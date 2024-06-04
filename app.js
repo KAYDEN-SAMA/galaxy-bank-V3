@@ -77,6 +77,8 @@ searchButton.addEventListener('click', () => {
           const usernameElement = document.createElement("p");
           const rankElement = document.createElement("p");
           const balanceElement = document.createElement("p");
+          const bagageElement = document.createElement("p");
+          const warningsElement = document.createElement("p");
           const copyButton = document.createElement("button");
           
           const memberId = Object.keys(user)[0];
@@ -85,15 +87,19 @@ searchButton.addEventListener('click', () => {
           usernameElement.textContent = "اللقب: " + userData.username;
           rankElement.textContent = "الرتبة: " + userData.rank;
           balanceElement.textContent = "الرصيد: " + userData.balance;
+          bagageElement.textContent = "السلعة: " + userData.bagage;
+          warningsElement.textContent = "الإنذارات: "+userData.warnings;
           copyButton.textContent = "نسخ";
           
           dataCountainer.appendChild(usernameElement);
           dataCountainer.appendChild(rankElement);
           dataCountainer.appendChild(balanceElement);
+          dataCountainer.appendChild(bagageElement);
+          dataCountainer.appendChild(warningsElement);
           dataCountainer.appendChild(copyButton);
           
           copyButton.addEventListener('click', () => {
-            const textToShare = `لقبي: ${userData.username}، رتبتي: ${userData.rank} و رصيدي: ${userData.balance}`;
+            const textToShare = `لقبي: ${userData.username}، رتبتي: ${userData.rank} و رصيدي: ${userData.balance}، سلعتي: ${userData.bagage}، إنذاراتي: ${userData.warnings}`;
             navigator.clipboard.writeText(textToShare).then(
               copyButton.textContent = "تم النسخ"
               )
@@ -113,3 +119,4 @@ searchButton.addEventListener('click', () => {
       });
   }
 });
+      
