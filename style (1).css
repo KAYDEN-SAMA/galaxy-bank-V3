@@ -22,10 +22,22 @@ body {
 header {
   border-bottom: 1px black solid;
   padding: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 header h1 {
   animation: fadeInDown 1s ease-in-out;
+}
+
+header img {
+  width: 7em;
+  height: 7em;
+  object-fit: cover;
+  border-radius: 3%;
+  margin-top: 2%;
+  display: none;
 }
 
 main {
