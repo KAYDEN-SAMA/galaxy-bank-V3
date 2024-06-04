@@ -110,7 +110,7 @@ searchButton.addEventListener('click', () => {
           dataCountainer.appendChild(copyButton);
           
           copyButton.addEventListener('click', () => {
-            const textToShare = `لقبي: ${userData.username}، رتبتي: ${userData.rank} و رصيدي: ${userData.balance}، سلعتي: ${userData.bagage}، إنذاراتي: ${userData.warnings}`;
+            const textToShare = `لقبي: ${userData.username}، رتبتي: ${userData.rank} رصيدي: ${userData.balance}، سلعتي: ${userData.bagage}و إنذاراتي: ${userData.warnings}`;
             navigator.clipboard.writeText(textToShare).then(
               copyButton.textContent = "تم النسخ"
               )
