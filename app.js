@@ -43,13 +43,14 @@ async function searchUserByUsername(username) {
   }
 }
 
+const header = document.getElementById("header");
 const usernameSearchInput = document.getElementById("usernameSearchInput");
 const searchButton = document.getElementById("searchButton");
-const errorElm = document.getElementById('errorElm');
+const errorElm = document.getElementById("errorElm");
 
 searchButton.addEventListener('click', () => {
   let usernameSearchValue = usernameSearchInput.value.trim();
-  const arabicPattern = /^[\u0600-\u06FF\u0750-\u077F]+$/;
+  const arabicPattern = /^[\u0600-\u06FF\u0750-\u077F\s]+$/;
 
   if (usernameSearchValue === ""){
     errorElm.textContent = "أدخل اللقب أولا!";
@@ -72,6 +73,7 @@ searchButton.addEventListener('click', () => {
     searchUserByUsername(usernameSearchValue)
       .then((user) => {
         if (user) {
+          
           dataCountainer.innerHTML = "";
           
           const usernameElement = document.createElement("p");
@@ -89,6 +91,15 @@ searchButton.addEventListener('click', () => {
           balanceElement.textContent = "الرصيد: " + userData.balance;
           bagageElement.textContent = "السلعة: " + userData.bagage;
           warningsElement.textContent = "الإنذارات: "+userData.warnings;
+          
+          if (userData.cover){
+            const coverElement = document.getElementById("headerCover");
+            
+            coverElement.style.display = "block";
+
+            coverElement.src = userData.cover;
+          }
+          
           copyButton.textContent = "نسخ";
           
           dataCountainer.appendChild(usernameElement);
@@ -119,4 +130,3 @@ searchButton.addEventListener('click', () => {
       });
   }
 });
-      
