@@ -80,8 +80,7 @@ searchButton.addEventListener('click', () => {
           const rankElement = document.createElement("p");
           const balanceElement = document.createElement("p");
           const bagageElement = document.createElement("p");
-          const warningsElement = document.createElement("p");
-          const copyButton = document.createElement("button");
+          const shopLinkButton = document.createElement("button");
           
           const memberId = Object.keys(user)[0];
           const userData = user[memberId];
@@ -90,7 +89,6 @@ searchButton.addEventListener('click', () => {
           rankElement.textContent = "الرتبة: " + userData.rank;
           balanceElement.textContent = "الرصيد: " + userData.balance;
           bagageElement.textContent = "السلعة: " + userData.bagage;
-          warningsElement.textContent = "الإنذارات: "+userData.warnings;
           
           if (userData.cover){
             const coverElement = document.getElementById("headerCover");
@@ -98,25 +96,19 @@ searchButton.addEventListener('click', () => {
             coverElement.style.display = "block";
 
             coverElement.src = userData.cover;
+            
           }
           
-          copyButton.textContent = "نسخ";
+          shopLinkButton.textContent = "المتجر";
           
           dataCountainer.appendChild(usernameElement);
           dataCountainer.appendChild(rankElement);
           dataCountainer.appendChild(balanceElement);
           dataCountainer.appendChild(bagageElement);
-          dataCountainer.appendChild(warningsElement);
-          dataCountainer.appendChild(copyButton);
+          dataCountainer.appendChild(shopLinkButton);
           
-          copyButton.addEventListener('click', () => {
-            const textToShare = `لقبي: ${userData.username}، رتبتي: ${userData.rank} رصيدي: ${userData.balance}، سلعتي: ${userData.bagage}و إنذاراتي: ${userData.warnings}`;
-            navigator.clipboard.writeText(textToShare).then(
-              copyButton.textContent = "تم النسخ"
-              )
-              setTimeout(() => {
-                copyButton.textContent = "نسخ"
-              }, 1100)
+          shopLinkButton.addEventListener('click', () => {
+            window.location.href = "shop.html";
           })
           
         } else {
@@ -126,7 +118,8 @@ searchButton.addEventListener('click', () => {
         }
       })
       .catch((error) => {
-        alert("خطأ:", error);
+        console.error(error)
+        alert('حصل خطأ!')
       });
   }
 });
